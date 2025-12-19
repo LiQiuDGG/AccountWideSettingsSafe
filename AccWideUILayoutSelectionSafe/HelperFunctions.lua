@@ -1,6 +1,6 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUIAceAddonLocale")
+local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUISafeAddonLocale")
 
-function AccWideUIAceAddon:ToBoolean(str)
+function AccWideUISafeAddon:ToBoolean(str)
 	local bool = false
 	if (str == "true" or str == true) then
 		bool = true
@@ -8,35 +8,35 @@ function AccWideUIAceAddon:ToBoolean(str)
 	return bool
 end
 
-function AccWideUIAceAddon:IsMidnight() -- Temp for Beta
+function AccWideUISafeAddon:IsMidnight() -- Temp for Beta
 	return (LE_EXPANSION_LEVEL_CURRENT == LE_EXPANSION_MIDNIGHT) or false
 	--return true
 end
 
-function AccWideUIAceAddon:IsMainline()
+function AccWideUISafeAddon:IsMainline()
 	return (WOW_PROJECT_ID == WOW_PROJECT_MAINLINE) or false
 end
 
-function AccWideUIAceAddon:IsClassicAny()
+function AccWideUISafeAddon:IsClassicAny()
 	return (WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE) or false
 end
 
-function AccWideUIAceAddon:IsClassicProgression()
+function AccWideUISafeAddon:IsClassicProgression()
 	return (WOW_PROJECT_ID == WOW_PROJECT_MISTS_CLASSIC) or false
 end
 
-function AccWideUIAceAddon:IsClassicWrath()
+function AccWideUISafeAddon:IsClassicWrath()
 	return (LE_EXPANSION_LEVEL_CURRENT == LE_EXPANSION_WRATH_OF_THE_LICH_KING) or false
 end
 
-function AccWideUIAceAddon:IsClassicTBC()
+function AccWideUISafeAddon:IsClassicTBC()
 	return (LE_EXPANSION_LEVEL_CURRENT == LE_EXPANSION_BURNING_CRUSADE) or false
 end
 
-function AccWideUIAceAddon:IsClassicVanilla()
+function AccWideUISafeAddon:IsClassicVanilla()
 	return (LE_EXPANSION_LEVEL_CURRENT == LE_EXPANSION_CLASSIC) or false
 end
 
-function AccWideUIAceAddon:IsClassicEra()
+function AccWideUISafeAddon:IsClassicEra()
 	return (WOW_PROJECT_ID == WOW_PROJECT_CLASSIC) or false
 end

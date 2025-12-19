@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUIAceAddonLocale")
+local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUISafeAddonLocale")
 
 -- Popups for first time set up
 StaticPopupDialogs["ACCWIDEUI_FIRSTTIMEPOPUP"] = {
@@ -7,11 +7,11 @@ StaticPopupDialogs["ACCWIDEUI_FIRSTTIMEPOPUP"] = {
 	button2 = L["ACCWUI_FIRSTTIME_BTN2"],
 	verticalButtonLayout = true,
 	OnAccept  = function()
-		AccWideUIAceAddon.db.global.hasDoneFirstTimeSetup = true
-		AccWideUIAceAddon:SaveUISettings()
-		AccWideUIAceAddon.TempData.HasDoneInitialLoad = true
-		if (AccWideUIAceAddon:IsMainline()) then
-			AccWideUIAceAddon:SaveEditModeSettings()
+		AccWideUISafeAddon.db.global.hasDoneFirstTimeSetup = true
+		AccWideUISafeAddon:SaveUISettings()
+		AccWideUISafeAddon.TempData.HasDoneInitialLoad = true
+		if (AccWideUISafeAddon:IsMainline()) then
+			AccWideUISafeAddon:SaveEditModeSettings()
 		end
 		C_Timer.After(0.1, function()
 			StaticPopup_Show("ACCWIDEUI_FIRSTTIMEPOPUP_ACCEPTED")
@@ -28,7 +28,7 @@ StaticPopupDialogs["ACCWIDEUI_FIRSTTIMEPOPUP"] = {
 }
 
 StaticPopupDialogs["ACCWIDEUI_FIRSTTIMEPOPUP_ACCEPTED"] = {
-	text = FAIR_DIFFICULTY_COLOR:WrapTextInColorCode(L["ACCWUI_ADDONNAME"] .. "\n--------------------------------") .. "\n\n" .. L["ACCWUI_FIRSTTIME_ACCEPTED_LINE1"] .. "\n" .. string.format(L["ACCWUI_FIRSTTIME_ACCEPTED_LINE2"], AccWideUIAceAddon.TempData.TextSlash),
+	text = FAIR_DIFFICULTY_COLOR:WrapTextInColorCode(L["ACCWUI_ADDONNAME"] .. "\n--------------------------------") .. "\n\n" .. L["ACCWUI_FIRSTTIME_ACCEPTED_LINE1"] .. "\n" .. string.format(L["ACCWUI_FIRSTTIME_ACCEPTED_LINE2"], AccWideUISafeAddon.TempData.TextSlash),
 	button1 = OKAY,
 	timeout = 0,
 	sound = SOUNDKIT.GS_CHARACTER_CREATION_CREATE_CHAR,
@@ -44,6 +44,6 @@ StaticPopupDialogs["ACCWIDEUI_FIRSTTIMEPOPUP_DECLINED"] = {
 	whileDead = true,
 	hideOnEscape = false,
 	OnAccept  = function()
-		AccWideUIAceAddon.TempData.HasDimissedFTPAlready = true
+		AccWideUISafeAddon.TempData.HasDimissedFTPAlready = true
 	end,
 }

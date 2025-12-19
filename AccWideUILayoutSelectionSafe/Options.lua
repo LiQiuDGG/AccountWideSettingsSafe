@@ -1,6 +1,6 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUIAceAddonLocale")
+local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUISafeAddonLocale")
 
-function AccWideUIAceAddon:GenerateDefaultDB()
+function AccWideUISafeAddon:GenerateDefaultDB()
 
 	local defaults = {
 		global = {
@@ -204,14 +204,14 @@ end
 
 
 
-function AccWideUIAceAddon:GenerateOptions()
+function AccWideUISafeAddon:GenerateOptions()
 
 	local thisCheckboxWidth = 1.6
 
-	AccWideUIAceAddon.optionsData = {
+	AccWideUISafeAddon.optionsData = {
 		type = "group",
 		name = L["ACCWUI_ADDONNAME"],
-		handler = AccWideUIAceAddon,
+		handler = AccWideUISafeAddon,
 		childGroups = "tab",
 		args = {
 			desc = {
@@ -724,7 +724,7 @@ function AccWideUIAceAddon:GenerateOptions()
 			advanced = {
 				type = "group",
 				name = ADVANCED_OPTIONS,
-				--handler = AccWideUIAceAddon,
+				--handler = AccWideUISafeAddon,
 				get = "GetGlobalToggle",
 				set = "SetGlobalToggle",
 				order = 5,
@@ -747,7 +747,7 @@ function AccWideUIAceAddon:GenerateOptions()
 								name = L["ACCWUI_OPT_CHK_SCREENSIZE"],
 								width = "full",
 								order = 1,
-								desc = string.format(L["ACCWUI_OPT_CHK_SCREENSIZE_DESC"], AccWideUIAceAddon.TempData.ScreenRes),
+								desc = string.format(L["ACCWUI_OPT_CHK_SCREENSIZE_DESC"], AccWideUISafeAddon.TempData.ScreenRes),
 							},
 							allowCustomCVars = {
 								type = "toggle",
@@ -886,7 +886,7 @@ function AccWideUIAceAddon:GenerateOptions()
 
 
 	-- Edit Mode Specs
-	if (AccWideUIAceAddon:IsMainline() == true or AccWideUIAceAddon:IsClassicEra() == true) then
+	if (AccWideUISafeAddon:IsMainline() == true or AccWideUISafeAddon:IsClassicEra() == true) then
 
 		local NumOfSpecs = GetNumSpecializations(false, false)
 
@@ -914,15 +914,15 @@ function AccWideUIAceAddon:GenerateOptions()
 
 
 	-- Remove Sync options that are not applicable to various versions
-	--[[if (AccWideUIAceAddon:IsMidnight() == true) then
+	--[[if (AccWideUISafeAddon:IsMidnight() == true) then
 		self.optionsData.args.settings.args.syncToggles.args.groupUnits.args.nameplates = nil
 	end]]
 
-	if (AccWideUIAceAddon:IsMidnight() ~= true) then
+	if (AccWideUISafeAddon:IsMidnight() ~= true) then
 		self.optionsData.args.settings.args.syncToggles.args.groupInterface.args.damageMeter = nil
 	end
 
-	if (AccWideUIAceAddon:IsMainline() == false) then
+	if (AccWideUISafeAddon:IsMainline() == false) then
 		self.optionsData.args.settings.args.editModeSettings = nil
 		self.optionsData.args.settings.args.headerDiv2 = nil
 		self.optionsData.args.settings.args.syncToggles.args.groupInterface.args.cooldownViewer = nil
@@ -936,36 +936,36 @@ function AccWideUIAceAddon:GenerateOptions()
 		self.optionsData.args.advanced.args.advanced.args.allowExperimentalSyncs = nil
 	end
 
-	if (AccWideUIAceAddon:IsMainline() == false and AccWideUIAceAddon:IsClassicTBC() == false) then
+	if (AccWideUISafeAddon:IsMainline() == false and AccWideUISafeAddon:IsClassicTBC() == false) then
 		self.optionsData.args.settings.args.syncToggles.args.groupCombat.args.lossOfControl = nil
 		self.optionsData.args.settings.args.syncToggles.args.groupInterface.editModeLayout = nil
 	end
 
-	if (AccWideUIAceAddon:IsClassicVanilla() == true) then
+	if (AccWideUISafeAddon:IsClassicVanilla() == true) then
 		self.optionsData.args.settings.args.syncToggles.args.groupUnits.arenaFrames = nil
 	end
 
-	if (AccWideUIAceAddon:IsMainline() == true or AccWideUIAceAddon:IsClassicProgression() == true) then
+	if (AccWideUISafeAddon:IsMainline() == true or AccWideUISafeAddon:IsClassicProgression() == true) then
 		self.optionsData.args.settings.args.syncToggles.args.groupInterface.spellOverlay = nil
 	end
 
 
 
 	-- Remove Chat options that are not applicable to various versions
-	if (AccWideUIAceAddon:IsMainline()) then
+	if (AccWideUISafeAddon:IsMainline()) then
 		self.optionsData.args.channels.args.worldDefense = nil
 		self.optionsData.args.channels.args.HardcoreDeaths = nil
 	end
 
-	if (AccWideUIAceAddon:IsClassicWrath() == false and AccWideUIAceAddon:IsClassicEra() == false) then
+	if (AccWideUISafeAddon:IsClassicWrath() == false and AccWideUISafeAddon:IsClassicEra() == false) then
 		self.optionsData.args.channels.args.guildRecruitment = nil
 	end
 
-	if (AccWideUIAceAddon:IsClassicEra() == false) then
+	if (AccWideUISafeAddon:IsClassicEra() == false) then
 		self.optionsData.args.channels.args.hardcoreDeaths = nil
 	end
 
-	if (AccWideUIAceAddon:IsMainline() == false and AccWideUIAceAddon:IsClassicEra() == false) then
+	if (AccWideUISafeAddon:IsMainline() == false and AccWideUISafeAddon:IsClassicEra() == false) then
 		self.optionsData.args.channels.args.services = nil
 	end
 
@@ -986,43 +986,43 @@ end
 
 -- for documentation on the info table
 -- https://www.wowace.com/projects/ace3/pages/ace-config-3-0-options-tables#title-4-1
-function AccWideUIAceAddon:GetSyncToggle(info)
+function AccWideUISafeAddon:GetSyncToggle(info)
 	return self.db.profile.syncToggles[info[#info]]
 end
 
-function AccWideUIAceAddon:SetSyncToggle(info, value)
+function AccWideUISafeAddon:SetSyncToggle(info, value)
 	self.db.profile.syncToggles[info[#info]] = value
 end
 
-function AccWideUIAceAddon:GetBlizzChannelToggle(info)
+function AccWideUISafeAddon:GetBlizzChannelToggle(info)
 	return self.db.profile.blizzChannels[info[#info]]
 end
 
-function AccWideUIAceAddon:SetBlizzChannelToggle(info, value)
+function AccWideUISafeAddon:SetBlizzChannelToggle(info, value)
 	self.db.profile.blizzChannels[info[#info]] = value
 end
 
-function AccWideUIAceAddon:GetGlobalToggle(info)
+function AccWideUISafeAddon:GetGlobalToggle(info)
 	return self.db.global[info[#info]]
 end
 
-function AccWideUIAceAddon:SetGlobalToggle(info, value)
+function AccWideUISafeAddon:SetGlobalToggle(info, value)
 	self.db.global[info[#info]] = value
 end
 
-function AccWideUIAceAddon:GetEditModeSpec(info)
+function AccWideUISafeAddon:GetEditModeSpec(info)
 	return self.db.char.useEditModeLayout[info[#info]]
 end
 
-function AccWideUIAceAddon:SetEditModeSpec(info, value)
+function AccWideUISafeAddon:SetEditModeSpec(info, value)
 	self.db.char.useEditModeLayout[info[#info]] = value
 end
 
-function AccWideUIAceAddon:GetCustomCVarList(info)
+function AccWideUISafeAddon:GetCustomCVarList(info)
 	return self.db.profile.syncData.customCVars[info[#info]]
 end
 
-function AccWideUIAceAddon:SetCustomCVarList(info, value)
+function AccWideUISafeAddon:SetCustomCVarList(info, value)
 	value = value:gsub("%s+", "\n")
 	value = value:gsub(",", "\n")
 	value = value:gsub("\n\n\n", "\n")
@@ -1031,7 +1031,7 @@ function AccWideUIAceAddon:SetCustomCVarList(info, value)
 	self.db.profile.syncData.customCVars[info[#info]] = value
 end
 
-function AccWideUIAceAddon:ShouldChatOptsDisable()
+function AccWideUISafeAddon:ShouldChatOptsDisable()
 	if (self.db.profile.syncToggles.chatWindow == true) then
 		return false
 	else
@@ -1039,10 +1039,10 @@ function AccWideUIAceAddon:ShouldChatOptsDisable()
 	end
 end
 
-function AccWideUIAceAddon:ShouldCustomCVarListBeHidden()
+function AccWideUISafeAddon:ShouldCustomCVarListBeHidden()
 	return not self.db.global.allowCustomCVars
 end
 
-function AccWideUIAceAddon:ShouldExperimentalSyncsListBeHidden()
+function AccWideUISafeAddon:ShouldExperimentalSyncsListBeHidden()
 	return not self.db.global.allowExperimentalSyncs
 end

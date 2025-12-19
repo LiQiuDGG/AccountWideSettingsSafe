@@ -1,6 +1,6 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUIAceAddonLocale")
+local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUISafeAddonLocale")
 
-AccWideUIAceAddon.CVars = {
+AccWideUISafeAddon.CVars = {
 
 	Nameplates = {
 		"ColorNameplateNameBySelection",

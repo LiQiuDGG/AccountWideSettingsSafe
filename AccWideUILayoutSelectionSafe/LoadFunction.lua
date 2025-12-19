@@ -1,6 +1,6 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUIAceAddonLocale")
+local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUISafeAddonLocale")
 
-function AccWideUIAceAddon:LoadUISettings(doNotLoadChatOrBagSettings)
+function AccWideUISafeAddon:LoadUISettings(doNotLoadChatOrBagSettings)
 
 	local LoadUIAllowSaveTime = 36
 
@@ -42,7 +42,7 @@ function AccWideUIAceAddon:LoadUISettings(doNotLoadChatOrBagSettings)
 				end
 
 
-				for k, v in pairs(AccWideUIAceAddon.CVars.ActionBars) do
+				for k, v in pairs(AccWideUISafeAddon.CVars.ActionBars) do
 					if (self.db.profile.syncData.actionBars.cvars[v] ~= nil) then
 						SetCVar(v, self.db.profile.syncData.actionBars.cvars[v])
 					end
@@ -876,7 +876,7 @@ function AccWideUIAceAddon:LoadUISettings(doNotLoadChatOrBagSettings)
 							self:Print("[Chat Window] Joining Channels.")
 						end
 
-						AccWideUIAceAddon:BlizzChannelManager()
+						AccWideUISafeAddon:BlizzChannelManager()
 
 						-- Chat Channels
 						for k, v in pairs(self.db.profile.syncData.chat.channelsJoined) do
@@ -1266,7 +1266,7 @@ end
 
 
 
-function AccWideUIAceAddon:LoadEditModeSettings()
+function AccWideUISafeAddon:LoadEditModeSettings()
 
 	if ((self:IsMainline() or self:IsClassicTBC()) and self.db.global.hasDoneFirstTimeSetup == true and type(self.db.profile.syncData.editModeLayoutID) == "number") then
 
@@ -1302,7 +1302,7 @@ function AccWideUIAceAddon:LoadEditModeSettings()
 end
 
 
-function AccWideUIAceAddon:ForceLoadSettings()
+function AccWideUISafeAddon:ForceLoadSettings()
 	if (not InCombatLockdown()) then
 		if (C_AddOns.IsAddOnLoaded("EditModeExpanded") == true and not self.TempData.EditModeExpandedTriggered) then
 			 self.TempData.EditModeExpandedTriggered = true

@@ -23,9 +23,9 @@
 ## Category-zhTW: 使用者介面
 
 ## IconTexture: Interface\Icons\inv_glyph_primewarrior.blp
-## AddonCompartmentFunc: AccWideUI_CompartmentClick
-## AddonCompartmentFuncOnEnter: AccWideUI_CompartmentHover
-## AddonCompartmentFuncOnLeave: AccWideUI_CompartmentLeave
+## AddonCompartmentFunc: AccWideUISafe_CompartmentClick
+## AddonCompartmentFuncOnEnter: AccWideUISafe_CompartmentHover
+## AddonCompartmentFuncOnLeave: AccWideUISafe_CompartmentLeave
 
 embeds.xml
 

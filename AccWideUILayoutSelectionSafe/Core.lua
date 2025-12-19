@@ -1,17 +1,17 @@
-AccWideUIAceAddon = LibStub("AceAddon-3.0"):NewAddon("AccWideUIAceAddon", "AceEvent-3.0", "AceConsole-3.0", "AceHook-3.0", "AceTimer-3.0")
-local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUIAceAddonLocale")
+AccWideUISafeAddon = LibStub("AceAddon-3.0"):NewAddon("AccWideUISafeAddon", "AceEvent-3.0", "AceConsole-3.0", "AceHook-3.0", "AceTimer-3.0")
+local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUISafeAddonLocale")
 local AC = LibStub("AceConfig-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
 
 --Temporary Data
-AccWideUIAceAddon.TempData = {
+AccWideUISafeAddon.TempData = {
 	TextSlash = "/awi",
 	IsCurrentlyLoadingSettings = false,
 	LoadSettingsAfterCombat = false
 }
 
 
-function AccWideUIAceAddon:OnInitialize()
+function AccWideUISafeAddon:OnInitialize()
 
 	-- Migrate from original addon's SavedVariables if this is first run of Safe variant
 	if (AccWideUISafeDB == nil and AccWideUIAceDB ~= nil) then
@@ -21,17 +21,17 @@ function AccWideUIAceAddon:OnInitialize()
 		end
 	end
 
-	self.db = LibStub("AceDB-3.0"):New("AccWideUISafeDB", AccWideUIAceAddon:GenerateDefaultDB(), true)
+	self.db = LibStub("AceDB-3.0"):New("AccWideUISafeDB", AccWideUISafeAddon:GenerateDefaultDB(), true)
 
 	if (AccWideUI_AccountData ~= nil and AccWideUI_AccountData.HasDoneV1Migration ~= true) then
-		AccWideUIAceAddon:MigrateFromV1()
+		AccWideUISafeAddon:MigrateFromV1()
 	end
 
 	AccWideUI_AccountData = nil
 
 end
 
-function AccWideUIAceAddon:OnEnable()
+function AccWideUISafeAddon:OnEnable()
 
 	local thisScreenWidth, thisScreenHeight = GetPhysicalScreenSize()
 	self.TempData.ScreenRes = thisScreenWidth .. "x" .. thisScreenHeight
@@ -41,9 +41,9 @@ function AccWideUIAceAddon:OnEnable()
 	local profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 	self.optionsData.args.profiles = profiles
 	self.optionsData.args.profiles.order = 4
-	AC:RegisterOptionsTable("AccWideUIAceAddon_Options", self.optionsData)
+	AC:RegisterOptionsTable("AccWideUISafeAddon_Options", self.optionsData)
 
-	self.optionsFrame = ACD:AddToBlizOptions("AccWideUIAceAddon_Options", L["ACCWUI_ADDONNAME_SHORT"])
+	self.optionsFrame = ACD:AddToBlizOptions("AccWideUISafeAddon_Options", L["ACCWUI_ADDONNAME_SHORT"])
 
 	self.db.RegisterCallback(self, "OnNewProfile", "DoProfileInit")
     self.db.RegisterCallback(self, "OnProfileChanged", "DoProfileInit")
@@ -70,7 +70,7 @@ function AccWideUIAceAddon:OnEnable()
 	self:RegisterEvent("PLAYER_REGEN_ENABLED")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED")
 
-	if (AccWideUIAceAddon:IsMainline()) then
+	if (AccWideUISafeAddon:IsMainline()) then
 		self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 		self:RegisterEvent("BAG_SLOT_FLAGS_UPDATED")
 		self:RegisterEvent("BANK_BAG_SLOT_FLAGS_UPDATED")
@@ -180,7 +180,7 @@ function AccWideUIAceAddon:OnEnable()
 
 end
 
-function AccWideUIAceAddon:DoProfileInit(event, db, profileKey)
+function AccWideUISafeAddon:DoProfileInit(event, db, profileKey)
 
 	do
 		-- Nil old variables
@@ -213,7 +213,7 @@ function AccWideUIAceAddon:DoProfileInit(event, db, profileKey)
 
 
 
-		if (AccWideUIAceAddon:IsMainline() == true) then
+		if (AccWideUISafeAddon:IsMainline() == true) then
 
 			--Block Neighborhood Invites
 			if (not self.db.profile.syncData.blockNeighborhoodInvites.special.blockNeighborhoodInvites) then
@@ -238,7 +238,7 @@ function AccWideUIAceAddon:DoProfileInit(event, db, profileKey)
 				self.db.profile.syncData.editModeLayoutID = currentActiveLayout or 1
 
 				if self.db.global.useScreenSizeSpecificSettings == true then
-					self.db.profile.syncData.screenResolutionSpecific[AccWideUIAceAddon.TempData.ScreenRes].editModeLayoutID = currentActiveLayout or 1
+					self.db.profile.syncData.screenResolutionSpecific[AccWideUISafeAddon.TempData.ScreenRes].editModeLayoutID = currentActiveLayout or 1
 				end
 
 				if (self.db.global.printDebugTextToChat == true) then
@@ -288,7 +288,7 @@ end
 
 
 
-function AccWideUIAceAddon:DoBeforeProfileShutdown(event, db, profileKey)
+function AccWideUISafeAddon:DoBeforeProfileShutdown(event, db, profileKey)
 	if (self.db.global.hasDoneFirstTimeSetup == true and self.db.global.disableAutoSaveLoad == false and self.db.global.disableAutoSave == false) then
 		self:SaveUISettings(true)
 	end
@@ -296,16 +296,16 @@ end
 
 
 
-function AccWideUIAceAddon:SlashCommand(input, editbox)
+function AccWideUISafeAddon:SlashCommand(input, editbox)
 
 	if not input or input:trim() == "" then
 		Settings.OpenToCategory(self.optionsFrame.name)
 	elseif input:lower() == "save" or input:lower() == "profiles save" then
-		AccWideUIAceAddon:ForceSaveSettings()
+		AccWideUISafeAddon:ForceSaveSettings()
 	elseif input:lower() == "load" or input:lower() == "profiles load" then
-		AccWideUIAceAddon:ForceLoadSettings()
+		AccWideUISafeAddon:ForceLoadSettings()
 	else
-		LibStub("AceConfigCmd-3.0").HandleCommand(AccWideUIAceAddon, "awi", "AccWideUIAceAddon_Options", input)
+		LibStub("AceConfigCmd-3.0").HandleCommand(AccWideUISafeAddon, "awi", "AccWideUISafeAddon_Options", input)
 	end
 
 end
@@ -313,7 +313,7 @@ end
 
 
 
-function AccWideUIAceAddon:BlizzChannelManager()
+function AccWideUISafeAddon:BlizzChannelManager()
 
 	if (C_AddOns.IsAddOnLoaded("BlockBlizzChatChannels") == false) then
 
@@ -539,7 +539,7 @@ end
 
 
 
-function AccWideUIAceAddon:LOADING_SCREEN_DISABLED(event, arg1, arg2)
+function AccWideUISafeAddon:LOADING_SCREEN_DISABLED(event, arg1, arg2)
 
 	if (not self.TempData.HasDoneInitialLoad) then
 
@@ -583,18 +583,18 @@ end
 
 
 
-function AccWideUIAceAddon:CHANNEL_UI_UPDATE(event, arg1, arg2)
+function AccWideUISafeAddon:CHANNEL_UI_UPDATE(event, arg1, arg2)
 	self:BlizzChannelManager()
 end
 
-function AccWideUIAceAddon:ZONE_CHANGED_NEW_AREA(event, arg1, arg2)
+function AccWideUISafeAddon:ZONE_CHANGED_NEW_AREA(event, arg1, arg2)
 	self:ScheduleTimer(function()
 		self:BlizzChannelManager()
 	end, 5)
 end
 
 
-function AccWideUIAceAddon:CINEMATIC_STOP(event, arg1, arg2)
+function AccWideUISafeAddon:CINEMATIC_STOP(event, arg1, arg2)
 
 	if (not self.TempData.HasShownFTPPopup) then
 
@@ -611,7 +611,7 @@ function AccWideUIAceAddon:CINEMATIC_STOP(event, arg1, arg2)
 end
 
 
-function AccWideUIAceAddon:DISABLE_DECLINE_GUILD_INVITE(event, arg1, arg2)
+function AccWideUISafeAddon:DISABLE_DECLINE_GUILD_INVITE(event, arg1, arg2)
 	if (self.db.global.hasDoneFirstTimeSetup == true) then
 		self.db.profile.syncData.blockGuildInvites.special.blockGuildInvites = false
 	end
@@ -619,7 +619,7 @@ end
 
 
 
-function AccWideUIAceAddon:ENABLE_DECLINE_GUILD_INVITE(event, arg1, arg2)
+function AccWideUISafeAddon:ENABLE_DECLINE_GUILD_INVITE(event, arg1, arg2)
 	if (self.db.global.hasDoneFirstTimeSetup == true) then
 		self.db.profile.syncData.blockGuildInvites.special.blockGuildInvites = true
 	end
@@ -627,7 +627,7 @@ end
 
 
 
-function AccWideUIAceAddon:ACTIVE_TALENT_GROUP_CHANGED(event, arg1, arg2)
+function AccWideUISafeAddon:ACTIVE_TALENT_GROUP_CHANGED(event, arg1, arg2)
 	if (self.TempData.HasDoneInitialLoad) then
 		self:ScheduleTimer(function()
 			self:LoadEditModeSettings()
@@ -637,7 +637,7 @@ end
 
 
 
-function AccWideUIAceAddon:BAG_SLOT_FLAGS_UPDATED(event, arg1, arg2)
+function AccWideUISafeAddon:BAG_SLOT_FLAGS_UPDATED(event, arg1, arg2)
 	if (self.db.global.hasDoneFirstTimeSetup == true and self.db.global.disableAutoSaveLoad == false and self.db.global.disableAutoSave == false and self:IsMainline() == true) then
 		if (self.db.global.allowExperimentalSyncs == true) then
 			if (self.db.profile.syncToggles.bagOrganisation == true and self.TempData.IsCurrentlyLoadingSettings == false) then
@@ -649,7 +649,7 @@ end
 
 
 
-function AccWideUIAceAddon:BANK_BAG_SLOT_FLAGS_UPDATED(event, arg1, arg2)
+function AccWideUISafeAddon:BANK_BAG_SLOT_FLAGS_UPDATED(event, arg1, arg2)
 	if (self.db.global.hasDoneFirstTimeSetup == true and self.db.global.disableAutoSaveLoad == false and self.db.global.disableAutoSave == false and self:IsMainline() == true) then
 		if (self.db.global.allowExperimentalSyncs == true) then
 			if (self.db.profile.syncToggles.bagOrganisation == true and self.TempData.IsCurrentlyLoadingSettings == false) then
@@ -659,7 +659,7 @@ function AccWideUIAceAddon:BANK_BAG_SLOT_FLAGS_UPDATED(event, arg1, arg2)
 	end
 end
 
-function AccWideUIAceAddon:LET_RECENT_ALLIES_SEE_LOCATION_SETTING_UPDATED(event, arg1, arg2)
+function AccWideUISafeAddon:LET_RECENT_ALLIES_SEE_LOCATION_SETTING_UPDATED(event, arg1, arg2)
 	if (self.db.global.hasDoneFirstTimeSetup == true and self.db.global.disableAutoSaveLoad == false and self.db.global.disableAutoSave == false and self:IsMainline() == true) then
 		if (self.db.profile.syncToggles.locationVisibility == true) then
 			self.db.profile.syncData.locationVisibility.special.allowRecentAlliesSeeLocation = GetAllowRecentAlliesSeeLocation()
@@ -672,7 +672,7 @@ function AccWideUIAceAddon:LET_RECENT_ALLIES_SEE_LOCATION_SETTING_UPDATED(event,
 end
 
 
-function AccWideUIAceAddon:PLAYER_REGEN_ENABLED(event, arg1, arg2)
+function AccWideUISafeAddon:PLAYER_REGEN_ENABLED(event, arg1, arg2)
 	if (self.TempData.LoadSettingsAfterCombat == true) then
 		self.TempData.LoadSettingsAfterCombat = false
 		self:CancelAllTimers();
@@ -682,7 +682,7 @@ function AccWideUIAceAddon:PLAYER_REGEN_ENABLED(event, arg1, arg2)
 	end
 end
 
-function AccWideUIAceAddon:PLAYER_REGEN_DISABLED(event, arg1, arg2)
+function AccWideUISafeAddon:PLAYER_REGEN_DISABLED(event, arg1, arg2)
 	if (self.TempData.IsCurrentlyLoadingSettings == true) then
 		self.TempData.IsCurrentlyLoadingSettings = false
 		self.TempData.LoadSettingsAfterCombat = true

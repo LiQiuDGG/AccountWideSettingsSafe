@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("AccWideUIAceAddonLocale", "enUS", true, true)
+local L = LibStub("AceLocale-3.0"):NewLocale("AccWideUISafeAddonLocale", "enUS", true, true)
 
 L["ACCWUI_ADDONNAME"] = "Account Wide Interface Settings"
 L["ACCWUI_ADDONNAME_SHORT"] = "Account Wide Interface"

@@ -1,6 +1,6 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUIAceAddonLocale")
+local L = LibStub("AceLocale-3.0"):GetLocale("AccWideUISafeAddonLocale")
 
-function AccWideUIAceAddon:SaveUISettings(doNotSaveEditMode, isForced)
+function AccWideUISafeAddon:SaveUISettings(doNotSaveEditMode, isForced)
 
 	doNotSaveEditMode = doNotSaveEditMode or false
 	isForced = isForced or false
@@ -28,7 +28,7 @@ function AccWideUIAceAddon:SaveUISettings(doNotSaveEditMode, isForced)
 			self.db.global.hasDoneFirstTimeSetup = true
 
 
-			self.db.profile.lastSaved.character = AccWideUIAceAddon.TempData.ThisCharacter
+			self.db.profile.lastSaved.character = AccWideUISafeAddon.TempData.ThisCharacter
 			self.db.profile.lastSaved.unixTime = GetServerTime()
 
 			if ((self:IsMainline() or self:IsClassicTBC()) and doNotSaveEditMode == false) then
@@ -454,7 +454,7 @@ function AccWideUIAceAddon:SaveUISettings(doNotSaveEditMode, isForced)
 
 							local saveThisChannel = true
 
-							--[[for k, v in pairs(AccWideUIAceAddon.chatChannelNames) do
+							--[[for k, v in pairs(AccWideUISafeAddon.chatChannelNames) do
 								if v == name then
 									saveThisChannel = false
 								end
@@ -691,7 +691,7 @@ function AccWideUIAceAddon:SaveUISettings(doNotSaveEditMode, isForced)
 
 end
 
-function AccWideUIAceAddon:SaveEditModeSettings()
+function AccWideUISafeAddon:SaveEditModeSettings()
 
 	if ((self:IsMainline() or self:IsClassicTBC()) and self.db.global.hasDoneFirstTimeSetup == true) then
 
@@ -723,7 +723,7 @@ function AccWideUIAceAddon:SaveEditModeSettings()
 end
 
 
-function AccWideUIAceAddon:SaveBagFlagSettings()
+function AccWideUISafeAddon:SaveBagFlagSettings()
 
 	if (self:IsMainline() and self.db.global.allowExperimentalSyncs == true) then
 		if (self.db.profile.syncToggles.bagOrganisation == true) then
@@ -768,13 +768,13 @@ function AccWideUIAceAddon:SaveBagFlagSettings()
 end
 
 
-function AccWideUIAceAddon:ForceSaveSettings()
+function AccWideUISafeAddon:ForceSaveSettings()
 	self:Print(L["ACCWUI_DEBUG_TXT_FORCESAVE"]);
 	self:SaveUISettings(false, true);
 	self:SaveBagFlagSettings();
 	self.db.profile.syncData.blockGuildInvites.special.blockGuildInvites = GetAutoDeclineGuildInvites()
 
-	if (AccWideUIAceAddon:IsMainline()) then
+	if (AccWideUISafeAddon:IsMainline()) then
 		self.db.profile.syncData.blockNeighborhoodInvites.special.blockNeighborhoodInvites = GetAutoDeclineNeighborhoodInvites()
 
 		self.db.profile.syncData.bagOrganisation.settings.sortBagsRightToLeft = C_Container.GetSortBagsRightToLeft()
