@@ -1,17 +1,14 @@
 ## Interface: 120000, 110207, 50503, 30405, 20505, 11508
-## Title: Account Wide Interface Settings
+## Title: Account Wide Interface Settings (Safe)
 ## Version: @project-version@
-## Notes: Synchronises various Character-Specific Interface Settings Account Wide. /awi
-## Author: ConineSpiritwolf
-## SavedVariables: AccWideUIAceDB, AccWideUI_AccountData
+## Notes: Fork with auto-save disabled by default. Synchronises Character-Specific Interface Settings Account Wide. /awi
+## Author: NinerBull (fork by jfogarty)
+## SavedVariables: AccWideUISafeDB, AccWideUIAceDB, AccWideUI_AccountData
 ## DefaultState: enabled
 ## OptionalDeps: BlockBlizzChatChannels, Ace3, MoveAny, EditModeExpanded
 
 ## X-Category: HUDs
-## X-Website: https://github.com/NinerBull/AccWideUILayoutSelection
-## X-Curse-Project-ID: 700820
-## X-WoWI-ID: 26459
-## X-Wago-ID: n6VPMLGd
+## X-Website: https://github.com/jfogarty/AccountWideSettingsSafe
 
 ## Category: User Interface
 ## Category-deDE: Benutzerinterface

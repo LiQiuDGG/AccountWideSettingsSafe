@@ -5,7 +5,7 @@ function AccWideUIAceAddon:GenerateDefaultDB()
 	local defaults = {
 		global = {
 			disableAutoSaveLoad = false,
-			disableAutoSave = false,
+			disableAutoSave = true,  -- Safe variant: disabled by default
 			hasDoneFirstTimeSetup = false,
 			printDebugTextToChat = false,
 			printWhenLastSaved = false,

@@ -13,7 +13,15 @@ AccWideUIAceAddon.TempData = {
 
 function AccWideUIAceAddon:OnInitialize()
 
-	self.db = LibStub("AceDB-3.0"):New("AccWideUIAceDB", AccWideUIAceAddon:GenerateDefaultDB(), true)
+	-- Migrate from original addon's SavedVariables if this is first run of Safe variant
+	if (AccWideUISafeDB == nil and AccWideUIAceDB ~= nil) then
+		AccWideUISafeDB = AccWideUIAceDB
+		if (self.db and self.db.global and self.db.global.printDebugTextToChat) then
+			self:Print("[Safe] Migrated settings from original addon.")
+		end
+	end
+
+	self.db = LibStub("AceDB-3.0"):New("AccWideUISafeDB", AccWideUIAceAddon:GenerateDefaultDB(), true)
 
 	if (AccWideUI_AccountData ~= nil and AccWideUI_AccountData.HasDoneV1Migration ~= true) then
 		AccWideUIAceAddon:MigrateFromV1()

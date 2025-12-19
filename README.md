@@ -1,10 +1,25 @@
-# Account Wide Interface Settings
+# Account Wide Interface Settings (Safe)
+
+A fork of [Account Wide Interface Settings](https://github.com/NinerBull/AccWideUILayoutSelection) with **auto-save disabled by default** to prevent accidental settings overwrites.
 
 An addon for World of Warcraft - The War Within, MoP and Classic Era!
 
-![Info Img](https://cdn.wago.io/gallery/0mjDwbYoR0aa7ZYSzzVXY4G5VpLqiXgNX4DnWagJ.jpg)
+## What's Different in This Fork?
+
+This "Safe" variant adds a new option: **Disable Auto Saving Only**
+
+- Auto-save is **disabled by default** - your settings won't be automatically overwritten
+- Auto-load remains enabled - settings are still applied when you log in
+- You can manually save using `/awi profiles save` or the button in settings
+- Toggle auto-save back on in Advanced Options if you prefer the original behavior
+
+This is useful if you want to:
+- Load your saved settings on each character
+- Prevent accidental overwrites from experimental UI changes
+- Manually control when settings are saved
 
 ## About
+
 This QOL addon synchronizes various Blizzard Interface Settings that are **normally character specific** and applies them to **all** of your characters on your account automatically, including brand new characters.
 
 The addon can synchronise the following, and you can disable any that you'd rather keep character specific:
@@ -57,16 +72,18 @@ The addon can synchronise the following, and you can disable any that you'd rath
 * **Classic Era** - 1.15.8
 
 ## Installation
-Download the latest version from one of the places below, and unzip it in your `<warcraft>\<_version_>\Interface\Addons` folder if installing manually.
-* [CurseForge](https://www.curseforge.com/wow/addons/account-wide-ui)
-* [WoWInterface](https://www.wowinterface.com/downloads/info26459-AccountWideUILayoutSelection.html)
-* [Wago](https://addons.wago.io/addons/account-wide-ui)
-* [GitHub](https://github.com/NinerBull/AccWideUILayoutSelection/releases/latest)
-* Or put `https://github.com/NinerBull/AccWideUILayoutSelection` into your favourite Addon Manager
+
+Download the latest release from GitHub and unzip it in your `<warcraft>/<_version_>/Interface/Addons` folder.
+
+* [GitHub Releases](https://github.com/jfogarty/AccountWideSettingsSafe/releases/latest)
+
+### Migration from Original Addon
+
+If you previously used the original "Account Wide Interface Settings" addon, this fork will automatically migrate your settings on first run. Your original settings are preserved and can be used by either addon.
 
 ## Configuration
 You can access the config by any of the following methods:
-- Game Menu > Options > Addons > Account Wide Interface
+- Game Menu > Options > Addons > Account Wide Interface (Safe)
 - Typing `/awi` into chat
 - Clicking the 'Account Wide Interface' option in the Addon Compartment
 
@@ -79,5 +96,7 @@ You can access the config by any of the following methods:
 - `/awi profiles copyfrom PROFILENAME` - Copies data from PROFILENAME to the currently enabled profile
 - `/awi profiles delete PROFILENAME` - Deletes the profile called PROFILENAME
 
-## Translations
-* **Russian** by [ZamestoTV](https://github.com/Hubbotu)
+## Credits
+
+* Original addon by [ConineSpiritwolf / NinerBull](https://github.com/NinerBull/AccWideUILayoutSelection)
+* Russian translation by [ZamestoTV](https://github.com/Hubbotu)
