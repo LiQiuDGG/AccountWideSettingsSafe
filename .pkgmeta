@@ -1,4 +1,4 @@
-package-as: AccWideUILayoutSelection
+package-as: AccWideUILayoutSelectionSafe
 
 enable-nolib-creation: no
 
@@ -38,4 +38,4 @@ ignore:
   - .pkgmeta
 
 move-folders:
-  AccWideUILayoutSelection/AccWideUILayoutSelection: AccWideUILayoutSelection
+  AccWideUILayoutSelectionSafe/AccWideUILayoutSelectionSafe: AccWideUILayoutSelectionSafe

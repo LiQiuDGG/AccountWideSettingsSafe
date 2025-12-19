@@ -13,12 +13,12 @@ StaticPopupDialogs["ACCWIDEUI_FIRSTTIMEPOPUP"] = {
 		if (AccWideUIAceAddon:IsMainline()) then
 			AccWideUIAceAddon:SaveEditModeSettings()
 		end
-		C_Timer.After(0.1, function() 
+		C_Timer.After(0.1, function()
 			StaticPopup_Show("ACCWIDEUI_FIRSTTIMEPOPUP_ACCEPTED")
 		end)
 	end,
 	OnCancel = function()
-		C_Timer.After(0.1, function() 
+		C_Timer.After(0.1, function()
 			StaticPopup_Show("ACCWIDEUI_FIRSTTIMEPOPUP_DECLINED")
 		end)
 	end,

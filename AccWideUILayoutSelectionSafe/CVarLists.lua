@@ -91,7 +91,7 @@ AccWideUIAceAddon.CVars = {
 		"raidOptionSortMode",
 		"raidOptionDisplayPets",
 		"raidOptionShowBorders",
-		"raidOptionKeepGroupsTogether",	
+		"raidOptionKeepGroupsTogether",
 		"raidOptionDisplayMainTankAndAssist",
 		"raidFramesDisplayOnlyHealerPowerBars",
 		"useCompactPartyFrames",
@@ -119,7 +119,7 @@ AccWideUIAceAddon.CVars = {
 		"spellDiminishPVPEnemiesEnabled",
 		"spellDiminishPVPOnlyTriggerableByMe"
 	},
-	
+
 	BlockChannelInvites = {
 		"blockChannelInvites"
 	},
@@ -187,7 +187,7 @@ AccWideUIAceAddon.CVars = {
 	MouseoverCast = {
 		"enableMouseoverCast"
 	},
-	
+
 	SelfCast = {
 		"autoSelfCast"
 	},
@@ -195,15 +195,15 @@ AccWideUIAceAddon.CVars = {
 	EmpowerTap = {
 		"empowerTapControls"
 	},
-	
+
 	AssistedCombat = {
 		"assistedCombatHighlight"
 	},
-		
+
 	DamageMeter = {
 		"damageMeterEnabled"
 	},
-	
+
 	WorldMap = {
 		"mapFade",
 		"miniWorldMap",
@@ -232,7 +232,7 @@ AccWideUIAceAddon.CVars = {
 		"showBosses",
 		"worldMapOpacity"
 	},
-	
+
 	CalendarFilters = {
 		"calendarShowBattlegrounds",
 		"calendarShowDarkmoon",
@@ -241,7 +241,7 @@ AccWideUIAceAddon.CVars = {
 		"calendarShowResets",
 		"calendarShowWeeklyHolidays"
 	},
-	
+
 	Camera = {
 		"cameraSavedDistance",
 		"cameraSavedPetBattleDistance",
@@ -250,7 +250,7 @@ AccWideUIAceAddon.CVars = {
 		"cameraDistanceFixedValue",
 		"cameraBobbing"
 	},
-	
+
 	CombatMisc = {
 		"assistAttack",
 		"autoRangedCombat",
@@ -260,7 +260,7 @@ AccWideUIAceAddon.CVars = {
 		"TargetAutoLock",
 		"TargetEnemyAttacker"
 	},
-	
+
 	UIMisc = {
 		"characterFrameCollapsed",
 		"equipmentManager",
@@ -371,5 +371,5 @@ AccWideUIAceAddon.CVars = {
 		"VOICE_TEXT",
 		"PING"
 	}
-	
+
 }

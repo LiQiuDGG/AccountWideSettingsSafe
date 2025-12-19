@@ -868,7 +868,7 @@ function AccWideUIAceAddon:GenerateOptions()
 						fontSize = "medium",
 						order = 22,
 						width = "full",
-						name = string.format(L["ACCWUI_ABOUT"], C_AddOns.GetAddOnMetadata("AccWideUILayoutSelection", "Version"), C_AddOns.GetAddOnMetadata("AccWideUILayoutSelection", "Author"))
+						name = string.format(L["ACCWUI_ABOUT"], C_AddOns.GetAddOnMetadata("AccWideUILayoutSelectionSafe", "Version"), C_AddOns.GetAddOnMetadata("AccWideUILayoutSelectionSafe", "Author"))
 					},
 					desc2 = {
 						type = "description",

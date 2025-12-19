@@ -163,8 +163,8 @@ L["ACCWUI_UTILITY_TXT_ZONEMAPPOS"] = "Перемещает карту зоны �
 
 L["ACCWUI_JOINING_CHANNEL"] = "Автоматический вход в чат-канал «%s». Введите %s для настройки."  -- Needs Update
 L["ACCWUI_LEAVING_CHANNEL"] = "Автоматический выход из чат-канала «%s». Введите %s для настройки."
-	
+
 L["ACCWUI_ABOUT"] = "%s от %s - Посвящается Petrel <3" -- Needs Update
-L["ACCWUI_ISSUES"] = "Проблемы? Посетите https://github.com/NinerBull/AccWideUILayoutSelection/issues" -- Needs Update
+L["ACCWUI_ISSUES"] = "Проблемы? Посетите https://github.com/jfogarty/AccountWideSettingsSafe/issues" -- Needs Update
 
 L["ACCWUI_WAIT_TILL_COMBAT"] = "Невозможно загрузить настройки во время боя, они загрузятся после его окончания." -- Needs Update
